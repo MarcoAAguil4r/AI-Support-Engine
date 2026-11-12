@@ -145,3 +145,5 @@ variar entre proveedores/modelos.
 
 La persona responsable de integración ayuda a resolver conflictos, pero cada
 integrante debe revisar el resultado final y poder explicar el código presentado.
+## Integrantes 
+## Equipo 1 - Dulce Acevedo-3523110484 , Marco Antonio Aguilar-3523110229 , David Aguilar-3522110617
