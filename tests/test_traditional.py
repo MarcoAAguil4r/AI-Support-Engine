@@ -41,6 +41,30 @@ def test_non_security_response_does_not_require_human_review() -> None:
     assert result.requiresHumanReview is False
 
 
+@pytest.mark.parametrize(
+    ("message", "expected_category", "expected_priority"),
+    [
+        ("Mi cuenta fue bloqueada", Category.ACCESS, Priority.HIGH),
+        (
+            "La cuenta de tres usuarios quedó bloqueada y no pueden trabajar",
+            Category.ACCESS,
+            Priority.HIGH,
+        ),
+        ("El sistema se vuelve lento", Category.BUG, Priority.MEDIUM),
+        ("Un error visual menor en el botón", Category.BUG, Priority.LOW),
+        (
+            "La aplicación falla por una vulnerabilidad de inyección",
+            Category.SECURITY,
+            Priority.HIGH,
+        ),
+    ],
+)
+def test_priority_rules_and_security_precedence(
+    message: str, expected_category: Category, expected_priority: Priority
+) -> None:
+    assert classify(message) == (expected_category, expected_priority)
+
+
 @pytest.mark.parametrize("case", CASES, ids=lambda case: case["id"])
 def test_evaluation_reference_matches_traditional_rules(case: dict[str, str]) -> None:
     assert classify(case["message"]) == (

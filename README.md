@@ -72,6 +72,9 @@ Ejecuta las pruebas unitarias:
 python -m pytest -q
 ```
 
+Las pruebas cubren la clasificación y sus prioridades, el contrato de respuesta
+compartido por ambos modos y el despacho/los errores del endpoint.
+
 Con el servidor activo y el proveedor generativo configurado, corre la batería
 de 10 solicitudes (incluye mensajes ambiguos y dos intentos de inyección de
 instrucciones):
