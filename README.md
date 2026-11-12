@@ -90,61 +90,11 @@ el porcentaje de aciertos sobre los 10 casos. Crea evidencia CSV y JSON en
 conclusión debe mantenerse en un máximo de 150 palabras. Los resultados pueden
 variar entre proveedores/modelos.
 
-## Crear el repositorio y subir el proyecto
-
-1. Crea un repositorio vacío en GitHub llamado `ai-support-engine`. No agregues
-   README, licencia ni `.gitignore` desde GitHub, porque ya están en este
-   proyecto.
-2. Abre una terminal en esta carpeta y configura Git si aún no lo has hecho:
-
-   ```powershell
-   git init
-   git branch -M main
-   git add .
-   git commit -m "Initial AI Support Engine prototype"
-   ```
-
-3. Copia la URL HTTPS del repositorio recién creado y enlázala:
-
-   ```powershell
-   git remote add origin https://github.com/<organizacion-o-usuario>/ai-support-engine.git
-   git push -u origin main
-   ```
-
-4. Invita a los otros dos integrantes como colaboradores (o agrégalos al equipo
-   de la organización). Cada integrante clona el repositorio y crea una rama
-   propia con el formato `feature/<tema>`:
-
-   ```powershell
-   git clone https://github.com/<organizacion-o-usuario>/ai-support-engine.git
-   cd ai-support-engine
-   git switch -c feature/<tema>
-   ```
-
-5. Trabajen mediante Pull Requests hacia `main`. Protejan `main` para requerir
-   revisión de otro integrante y, si la configuración lo permite, que pasen las
-   pruebas. No suban `.env`, claves de API ni datos reales de soporte. Antes de
-   entregar, incluyan las evidencias generadas por la evaluación.
-
 ## Repartición para tres integrantes
 
 | Integrante | Responsabilidades | Entregables / aceptación |
 |---|---|---|
-| 1 — Motor tradicional y contrato | Mantener `app/schemas.py`, `app/traditional.py` y el endpoint compartido en `app/main.py`; acordar categorías, prioridades y respuestas predeterminadas. | Reglas para las cuatro categorías; prioridad y respuesta en cada caso; revisión humana para `SECURITY`; pruebas unitarias. |
+| 1 Marco — Motor tradicional y contrato | Mantener `app/schemas.py`, `app/traditional.py` y el endpoint compartido en `app/main.py`; acordar categorías, prioridades y respuestas predeterminadas. | Reglas para las cuatro categorías; prioridad y respuesta en cada caso; revisión humana para `SECURITY`; pruebas unitarias. |
 | 2 — Integración generativa y seguridad | Implementar y probar `app/generative.py`; configurar Ollama o proveedor compatible; manejar indisponibilidad/salidas inválidas y cuidar secretos e intentos de inyección. | Llamada real al modelo; salida JSON validada contra el contrato; errores explícitos; ninguna credencial en el repositorio. |
 | 3 — Comparación, integración y entrega | Mantener `scripts/run_evaluation.py`, ejecutar pruebas de ambos modos, revisar los resultados y actualizar este README con evidencia e instrucciones comprobadas. | Al menos 10 casos; incluye ambigüedad y dos intentos de confundir el sistema; CSV/JSON; porcentajes y conclusión técnica de hasta 150 palabras. |
 
-### Coordinación sugerida
-
-- **Inicio (15 min):** los tres revisan el contrato de la API, acuerdan los casos
-  de referencia y crean ramas. Integrante 1 comparte pronto los esquemas para que
-  2 y 3 puedan avanzar en paralelo.
-- **Implementación (60–90 min):** 1 desarrolla las reglas, 2 conecta el modelo y
-  3 prepara la batería comparativa, documentación y pruebas de integración.
-- **Integración (30–45 min):** revisan Pull Requests, ejecutan `pytest`, inician
-  la API y corren la evaluación completa con el modelo real.
-- **Cierre (15 min):** confirman que el repositorio no contiene secretos, guardan
-  las evidencias solicitadas y cada integrante explica su parte del código.
-
-La persona responsable de integración ayuda a resolver conflictos, pero cada
-integrante debe revisar el resultado final y poder explicar el código presentado.
