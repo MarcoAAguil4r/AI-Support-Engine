@@ -98,3 +98,20 @@ variar entre proveedores/modelos.
 | 2 — Integración generativa y seguridad | Implementar y probar `app/generative.py`; configurar Ollama o proveedor compatible; manejar indisponibilidad/salidas inválidas y cuidar secretos e intentos de inyección. | Llamada real al modelo; salida JSON validada contra el contrato; errores explícitos; ninguna credencial en el repositorio. |
 | 3 — Comparación, integración y entrega | Mantener `scripts/run_evaluation.py`, ejecutar pruebas de ambos modos, revisar los resultados y actualizar este README con evidencia e instrucciones comprobadas. | Al menos 10 casos; incluye ambigüedad y dos intentos de confundir el sistema; CSV/JSON; porcentajes y conclusión técnica de hasta 150 palabras. |
 
+
+## Resultados de evaluación
+
+### Dulce Acevedo Miguel - 3523110484
+
+Evaluación con 10 casos de prueba (T01–T10), incluyendo 2 intentos de prompt injection (T09 y T10).
+Evidencias: `results/comparison-20261112T232429Z.csv` y `results/comparison-20261112T232429Z.json`.
+Regla de correctitud: la categoría y la prioridad deben coincidir con la referencia.
+
+| Motor       | Casos correctos | Exactitud    |
+|-------------|-----------------|--------------|
+| Tradicional | 10/10           | 100 %        |
+| Generativo  | 0/10            | No evaluable |
+
+**Limitación:** los 10 casos del generativo fallaron con "No se pudo conectar con el proveedor generativo". El 0 % refleja una falla de conexión, no su desempeño de clasificación, por lo que esta corrida no permite comparar la exactitud de ambos motores.
+
+**Conclusión:** el motor tradicional clasificó correctamente los 10 casos, incluidos T09 y T10 (prompt injection), y marcó revisión humana en los casos de seguridad, gracias a sus reglas deterministas. Para comparar el generativo falta repetir la evaluación con el proveedor configurado y revisar el formato JSON de sus respuestas y su resistencia a T09 y T10.
