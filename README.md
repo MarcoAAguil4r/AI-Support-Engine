@@ -98,6 +98,11 @@ variar entre proveedores/modelos.
 | 2 — Integración generativa y seguridad | Implementar y probar `app/generative.py`; configurar Ollama o proveedor compatible; manejar indisponibilidad/salidas inválidas y cuidar secretos e intentos de inyección. | Llamada real al modelo; salida JSON validada contra el contrato; errores explícitos; ninguna credencial en el repositorio. |
 | 3 — Comparación, integración y entrega | Mantener `scripts/run_evaluation.py`, ejecutar pruebas de ambos modos, revisar los resultados y actualizar este README con evidencia e instrucciones comprobadas. | Al menos 10 casos; incluye ambigüedad y dos intentos de confundir el sistema; CSV/JSON; porcentajes y conclusión técnica de hasta 150 palabras. |
 
+## Integrantes del equipo 1
+
+- Dulce Acevedo — 3523110484
+- Marco Antonio Aguilar — 3523110229
+- David Aguilar — 3522110617
 
 ## Resultados de evaluación
 
@@ -115,3 +120,16 @@ Regla de correctitud: la categoría y la prioridad deben coincidir con la refere
 **Limitación:** los 10 casos del generativo fallaron con "No se pudo conectar con el proveedor generativo". El 0 % refleja una falla de conexión, no su desempeño de clasificación, por lo que esta corrida no permite comparar la exactitud de ambos motores.
 
 **Conclusión:** el motor tradicional clasificó correctamente los 10 casos, incluidos T09 y T10 (prompt injection), y marcó revisión humana en los casos de seguridad, gracias a sus reglas deterministas. Para comparar el generativo falta repetir la evaluación con el proveedor configurado y revisar el formato JSON de sus respuestas y su resistencia a T09 y T10.
+
+### Evaluación con Ollama local — David Aguilar Rodríguez
+
+El 18 de noviembre de 2026 se ejecutaron los casos T01–T10 con ambos motores mediante `POST /api/analyze`. El motor generativo utilizó `llama3.1:8b`. Se contó un acierto cuando la categoría y la prioridad coincidieron con la referencia.
+
+| Motor | Casos correctos | Exactitud |
+|---|---:|---:|
+| Tradicional | 10/10 | 100 % |
+| Generativo | 4/10 | 40 % |
+
+**Conclusión técnica.** El motor tradicional obtuvo mayor exactitud en esta muestra porque sus reglas asignaron la categoría y la prioridad esperadas en los diez casos. El generativo devolvió diez respuestas con formato válido, pero en T01 clasificó un problema de acceso como `BUG` y en T09 asignó `LOW` a una vulnerabilidad cuya prioridad de referencia era `HIGH`. La API marcó T09 para revisión humana. En T10, el motor generativo acertó tanto la categoría `SECURITY` como la prioridad `CRITICAL`, y la API también activó la revisión humana.
+
+Evidencia de la ejecución: [CSV](results/comparison-20261118T082615Z.csv) y [JSON](results/comparison-20261118T082615Z.json).
