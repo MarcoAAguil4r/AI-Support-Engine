@@ -139,6 +139,9 @@ def test_valid_provider_response_keeps_public_contract_and_separates_messages(
         provider_envelope(
             json.dumps({"category": "ACCESS", "priority": "LOW", "response": "   "})
         ),
+        provider_envelope(
+            json.dumps({"category": "ACCESS", "priority": "LOW", "response": ""})
+        ),
     ],
 )
 def test_rejects_invalid_external_or_generated_output(
