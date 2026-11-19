@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.responses import RedirectResponse
 
 from app.generative import ModelProviderError, analyze_generatively
 from app.schemas import AnalyzeRequest, AnalyzeResponse, Mode
@@ -9,6 +10,11 @@ app = FastAPI(
     description="Clasificacion tradicional y generativa de solicitudes de soporte.",
     version="1.0.0",
 )
+
+
+@app.get("/", include_in_schema=False)
+def home() -> RedirectResponse:
+    return RedirectResponse(url="/docs")
 
 
 @app.get("/health")
