@@ -95,62 +95,6 @@ sobre los 10 casos. Crea evidencia CSV y JSON en
 `results/`; revisa los errores y la conclusión automática antes de entregar. La
 conclusión debe mantenerse en un máximo de 150 palabras. Los resultados pueden
 variar entre proveedores/modelos.
-
-## Clasificador de aprendizaje automático
-
-También se incluye un flujo independiente de entrenamiento y evaluación con
-TF-IDF y regresión logística. Necesita un `tickets.csv` con tickets etiquetados
-por una persona y las columnas `message` y `category`; las categorías admitidas
-son `ACCESS`, `BUG`, `FEATURE` y `SECURITY`. No se incluye un dataset ficticio.
-
-Ejecuta el flujo desde la raíz del proyecto:
-
-```powershell
-python -m scripts.train_ml --data tickets.csv
-```
-
-El script hace una división estratificada de entrenamiento y prueba, imprime el
-`classification_report` y clasifica el mensaje de ejemplo. Para evaluar otro
-texto, usa `--predict "texto del ticket"`. El modelo se entrena en cada ejecución
-y no se integra todavía como modo del endpoint `/api/analyze`; requiere un dataset
-real y validado antes de usarse en producción.
-
-## Crear el repositorio y subir el proyecto
-
-1. Crea un repositorio vacío en GitHub llamado `ai-support-engine`. No agregues
-   README, licencia ni `.gitignore` desde GitHub, porque ya están en este
-   proyecto.
-2. Abre una terminal en esta carpeta y configura Git si aún no lo has hecho:
-
-   ```powershell
-   git init
-   git branch -M main
-   git add .
-   git commit -m "Initial AI Support Engine prototype"
-   ```
-
-3. Copia la URL HTTPS del repositorio recién creado y enlázala:
-
-   ```powershell
-   git remote add origin https://github.com/<organizacion-o-usuario>/ai-support-engine.git
-   git push -u origin main
-   ```
-
-4. Invita a los otros dos integrantes como colaboradores (o agrégalos al equipo
-   de la organización). Cada integrante clona el repositorio y crea una rama
-   propia con el formato `feature/<tema>`:
-
-   ```powershell
-   git clone https://github.com/<organizacion-o-usuario>/ai-support-engine.git
-   cd ai-support-engine
-   git switch -c feature/<tema>
-   ```
-
-5. Trabajen mediante Pull Requests hacia `main`. Protejan `main` para requerir
-   revisión de otro integrante y, si la configuración lo permite, que pasen las
-   pruebas. No suban `.env`, claves de API ni datos reales de soporte. Antes de
-   entregar, incluyan las evidencias generadas por la evaluación.
-
 ## Repartición para tres integrantes
 
 El estado de cada actividad, las integraciones pendientes y sus criterios de
@@ -158,21 +102,42 @@ aceptación están en [integrantes.md](./integrantes.md).
 
 | Integrante | Responsabilidades | Entregables / aceptación |
 |---|---|---|
-| 1 — Motor tradicional y contrato | Mantener `app/schemas.py`, `app/traditional.py` y el endpoint compartido en `app/main.py`; acordar categorías, prioridades y respuestas predeterminadas. | Reglas para las cuatro categorías; prioridad y respuesta en cada caso; revisión humana para `SECURITY`; pruebas unitarias. |
+| 1 Marco — Motor tradicional y contrato | Mantener `app/schemas.py`, `app/traditional.py` y el endpoint compartido en `app/main.py`; acordar categorías, prioridades y respuestas predeterminadas. | Reglas para las cuatro categorías; prioridad y respuesta en cada caso; revisión humana para `SECURITY`; pruebas unitarias. |
 | 2 — Integración generativa y seguridad | Implementar y probar `app/generative.py`; configurar Ollama o proveedor compatible; manejar indisponibilidad/salidas inválidas y cuidar secretos e intentos de inyección. | Llamada real al modelo; salida JSON validada contra el contrato; errores explícitos; ninguna credencial en el repositorio. |
 | 3 — Comparación, integración y entrega | Mantener `scripts/run_evaluation.py`, ejecutar pruebas de ambos modos, revisar los resultados y actualizar este README con evidencia e instrucciones comprobadas. | Al menos 10 casos; incluye ambigüedad y dos intentos de confundir el sistema; CSV/JSON; porcentajes y conclusión técnica de hasta 150 palabras. |
 
-### Coordinación sugerida
+## Integrantes del equipo 1
 
-- **Inicio (15 min):** los tres revisan el contrato de la API, acuerdan los casos
-  de referencia y crean ramas. Integrante 1 comparte pronto los esquemas para que
-  2 y 3 puedan avanzar en paralelo.
-- **Implementación (60–90 min):** 1 desarrolla las reglas, 2 conecta el modelo y
-  3 prepara la batería comparativa, documentación y pruebas de integración.
-- **Integración (30–45 min):** revisan Pull Requests, ejecutan `pytest`, inician
-  la API y corren la evaluación completa con el modelo real.
-- **Cierre (15 min):** confirman que el repositorio no contiene secretos, guardan
-  las evidencias solicitadas y cada integrante explica su parte del código.
+- Dulce Acevedo — 3523110484
+- Marco Antonio Aguilar — 3523110229
+- David Aguilar — 3522110617
 
-La persona responsable de integración ayuda a resolver conflictos, pero cada
-integrante debe revisar el resultado final y poder explicar el código presentado.
+## Resultados de evaluación
+
+### Dulce Acevedo Miguel - 3523110484
+
+Evaluación con 10 casos de prueba (T01–T10), incluyendo 2 intentos de prompt injection (T09 y T10).
+Evidencias: `results/comparison-20261112T232429Z.csv` y `results/comparison-20261112T232429Z.json`.
+Regla de correctitud: la categoría y la prioridad deben coincidir con la referencia.
+
+| Motor       | Casos correctos | Exactitud    |
+|-------------|-----------------|--------------|
+| Tradicional | 10/10           | 100 %        |
+| Generativo  | 0/10            | No evaluable |
+
+**Limitación:** los 10 casos del generativo fallaron con "No se pudo conectar con el proveedor generativo". El 0 % refleja una falla de conexión, no su desempeño de clasificación, por lo que esta corrida no permite comparar la exactitud de ambos motores.
+
+**Conclusión:** el motor tradicional clasificó correctamente los 10 casos, incluidos T09 y T10 (prompt injection), y marcó revisión humana en los casos de seguridad, gracias a sus reglas deterministas. Para comparar el generativo falta repetir la evaluación con el proveedor configurado y revisar el formato JSON de sus respuestas y su resistencia a T09 y T10.
+
+### Evaluación con Ollama local — David Aguilar Rodríguez
+
+El 18 de noviembre de 2026 se ejecutaron los casos T01–T10 con ambos motores mediante `POST /api/analyze`. El motor generativo utilizó `llama3.1:8b`. Se contó un acierto cuando la categoría y la prioridad coincidieron con la referencia.
+
+| Motor | Casos correctos | Exactitud |
+|---|---:|---:|
+| Tradicional | 10/10 | 100 % |
+| Generativo | 4/10 | 40 % |
+
+**Conclusión técnica.** El motor tradicional obtuvo mayor exactitud en esta muestra porque sus reglas asignaron la categoría y la prioridad esperadas en los diez casos. El generativo devolvió diez respuestas con formato válido, pero en T01 clasificó un problema de acceso como `BUG` y en T09 asignó `LOW` a una vulnerabilidad cuya prioridad de referencia era `HIGH`. La API marcó T09 para revisión humana. En T10, el motor generativo acertó tanto la categoría `SECURITY` como la prioridad `CRITICAL`, y la API también activó la revisión humana.
+
+Evidencia de la ejecución: [CSV](results/comparison-20261118T082615Z.csv) y [JSON](results/comparison-20261118T082615Z.json).
