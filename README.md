@@ -73,7 +73,12 @@ python -m pytest -q
 ```
 
 Las pruebas cubren la clasificación y sus prioridades, el contrato de respuesta
-compartido por ambos modos y el despacho/los errores del endpoint.
+compartido por ambos modos, el despacho/los errores del endpoint y las respuestas
+defectuosas, configuración, timeout y errores de conexión del cliente generativo.
+Las llamadas del cliente se simulan en estas pruebas; no sustituyen una prueba
+con el proveedor y el modelo reales. En modo generativo, las señales de seguridad
+reconocidas por las reglas tradicionales prevalecen sobre la categoría del modelo
+y devuelven la respuesta segura predefinida, siempre con revisión humana.
 
 Con el servidor activo y el proveedor generativo configurado, corre la batería
 de 10 solicitudes (incluye mensajes ambiguos y dos intentos de inyección de
@@ -84,13 +89,16 @@ python scripts/run_evaluation.py
 ```
 
 El script llama a ambos motores para cada caso, verifica la forma de respuesta,
-compara categoría y prioridad con una referencia definida en el código y calcula
-el porcentaje de aciertos sobre los 10 casos. Crea evidencia CSV y JSON en
+compara categoría y prioridad con una referencia definida en el código, comprueba
+que los casos SECURITY exijan revisión humana y calcula el porcentaje de aciertos
+sobre los 10 casos. Crea evidencia CSV y JSON en
 `results/`; revisa los errores y la conclusión automática antes de entregar. La
 conclusión debe mantenerse en un máximo de 150 palabras. Los resultados pueden
 variar entre proveedores/modelos.
-
 ## Repartición para tres integrantes
+
+El estado de cada actividad, las integraciones pendientes y sus criterios de
+aceptación están en [integrantes.md](./integrantes.md).
 
 | Integrante | Responsabilidades | Entregables / aceptación |
 |---|---|---|
