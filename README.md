@@ -72,6 +72,18 @@ Ejecuta las pruebas unitarias:
 python -m pytest -q
 ```
 
+Para entrenar el clasificador TF-IDF y evaluar un CSV etiquetado con las
+columnas `message` y `category`:
+
+```powershell
+python scripts/train_ml.py --data tickets.csv --predict "Encontré datos de otros clientes"
+```
+
+El comando imprime el reporte de clasificación, la matriz de confusión (filas
+reales y columnas predichas, en el orden de categorías indicado) y la categoría
+predicha con el score máximo de `predict_proba`, redondeado a tres decimales.
+Ese score es una probabilidad estimada por el modelo, no una garantía de certeza.
+
 Las pruebas cubren la clasificación y sus prioridades, el contrato de respuesta
 compartido por ambos modos, el despacho/los errores del endpoint y las respuestas
 defectuosas, configuración, timeout y errores de conexión del cliente generativo.

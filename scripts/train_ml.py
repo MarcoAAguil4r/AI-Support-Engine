@@ -34,9 +34,16 @@ def main() -> None:
     except ValueError as exc:
         parser.error(str(exc))
 
+    print("Reporte de clasificación:")
     print(result.report)
+    print("Orden de categorías de la matriz:", ", ".join(result.matrix_labels))
+    print("Matriz de confusión:")
+    print(result.confusion_matrix)
     print("Predicción:")
-    print(result.model.predict([args.predict])[0])
+    prediction = result.model.predict([args.predict])[0]
+    confidence = result.model.predict_proba([args.predict]).max()
+    print("Categoría:", prediction)
+    print("Score aproximado:", round(float(confidence), 3))
 
 
 if __name__ == "__main__":
