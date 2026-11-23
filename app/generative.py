@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 from pydantic import BaseModel, Field, ValidationError, field_validator
 
 from app.schemas import AnalyzeResponse, Category, Mode, Priority
-from app.traditional import has_security_indicators
+from app.traditional import analyze_traditionally, has_security_indicators
 
 logger = logging.getLogger(__name__)
 load_dotenv()
@@ -79,7 +79,7 @@ def _request_model(message: str) -> ModelResult:
             {"role": "user", "content": message},
         ],
     }
-    headers = {"Content-Type": "application/json"}
+    headers: dict[str, str] = {"Content-Type": "application/json"}
     if api_key:
         headers["Authorization"] = f"Bearer {api_key}"
     request = Request(
@@ -121,12 +121,20 @@ def _request_model(message: str) -> ModelResult:
 
 def analyze_generatively(message: str) -> AnalyzeResponse:
     result = _request_model(message)
+    if has_security_indicators(message):
+        security_result = analyze_traditionally(message)
+        return AnalyzeResponse(
+            category=security_result.category,
+            priority=security_result.priority,
+            response=security_result.response,
+            requiresHumanReview=True,
+            mode=Mode.generative,
+        )
+
     return AnalyzeResponse(
         category=result.category,
         priority=result.priority,
         response=result.response.strip(),
-        requiresHumanReview=(
-            result.category == Category.SECURITY or has_security_indicators(message)
-        ),
+        requiresHumanReview=result.category == Category.SECURITY,
         mode=Mode.generative,
     )

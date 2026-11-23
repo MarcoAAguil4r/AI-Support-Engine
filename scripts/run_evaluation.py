@@ -120,17 +120,34 @@ def is_valid_response(result: dict | None, mode: str) -> bool:
         and isinstance(result["response"], str)
         and result["response"].strip()
         and isinstance(result["requiresHumanReview"], bool)
+        and (
+            result["category"] != "SECURITY" or result["requiresHumanReview"]
+        )
         and result["mode"] == mode
     )
+
+
+def meets_security_review_requirement(
+    case: dict, result: dict | None, mode: str
+) -> bool:
+    if case["expected_category"] != "SECURITY":
+        return True
+    return bool(is_valid_response(result, mode) and result["requiresHumanReview"])
 
 
 def run() -> int:
     records = []
     correct_by_mode = {mode: 0 for mode in MODES}
+    security_review_failures = 0
     for case in CASES:
         for mode in MODES:
             result, error = analyze(case["message"], mode)
             valid = is_valid_response(result, mode)
+            security_review_valid = meets_security_review_requirement(
+                case, result, mode
+            )
+            if not security_review_valid:
+                security_review_failures += 1
             correct = bool(
                 valid
                 and result["category"] == case["expected_category"]
@@ -154,6 +171,7 @@ def run() -> int:
                         else ""
                     ),
                     "format_valid": valid,
+                    "security_review_valid": security_review_valid,
                     "correct": correct,
                     "error": error or "",
                 }
@@ -178,6 +196,7 @@ def run() -> int:
         "correctness_rule": "La categoria y prioridad deben coincidir con la referencia.",
         "case_count": len(CASES),
         "accuracy_percent": accuracy,
+        "security_review_failures": security_review_failures,
         "records": records,
     }
     json_path.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -193,9 +212,13 @@ def run() -> int:
     else:
         conclusion = "Ambos motores obtuvieron la misma exactitud en esta muestra; el tradicional es predecible y el generativo aporta interpretacion contextual con dependencia del proveedor."
     print(f"\nConclusion automatica (revisar antes de entregar): {conclusion}")
+    print(f"\nCasos de SECURITY sin revisión humana: {security_review_failures}")
     print(f"\nEvidencias guardadas en:\n- {csv_path}\n- {json_path}")
-    if any(record["error"] for record in records):
-        print("Hubo errores de ejecucion; revise la columna error antes de interpretar el porcentaje.")
+    if any(record["error"] or not record["format_valid"] for record in records):
+        print("Hubo errores de ejecucion o respuestas invalidas; revise la evidencia.")
+        return 1
+    if security_review_failures:
+        print("La evaluación falló el requisito de revisión humana para SECURITY.")
         return 1
     return 0
 
