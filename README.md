@@ -66,6 +66,8 @@ proveedor configurado y valida el JSON antes de responder.
 
 ## Pruebas y comparación
 
+Para el clasificador supervisado de consola, consulta [ml/README.md](ml/README.md).
+
 Ejecuta las pruebas unitarias:
 
 ```powershell

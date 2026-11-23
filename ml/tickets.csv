@@ -1,0 +1,65 @@
+message,category
+Olvidé mi contraseña y no puedo recuperar el acceso al portal,ACCESS
+El código de verificación nunca llega a mi correo corporativo,ACCESS
+Mi usuario fue desactivado después de varios intentos fallidos,ACCESS
+La autenticación de dos factores rechaza mi token válido,ACCESS
+Necesito desbloquear la cuenta de una nueva colaboradora,ACCESS
+El enlace para restablecer clave caduca inmediatamente,ACCESS
+No tengo permisos para abrir el panel de facturación,ACCESS
+La sesión se cierra cada vez que intento entrar al tablero,ACCESS
+El sistema indica credenciales incorrectas aunque fueron actualizadas,ACCESS
+No puedo vincular mi cuenta con el proveedor de identidad,ACCESS
+El inicio con SSO redirige a una página sin autorización,ACCESS
+Mi perfil no aparece habilitado para usar la plataforma,ACCESS
+La aplicación pide una contraseña anterior que ya no existe,ACCESS
+El administrador me creó pero no recibí invitación de acceso,ACCESS
+La cuenta queda bloqueada al confirmar el segundo factor,ACCESS
+No puedo ingresar desde la red VPN de la empresa,ACCESS
+Al adjuntar una imagen la pantalla se congela,BUG
+El formulario muestra un mensaje de error al enviar comentarios,BUG
+La gráfica de ventas calcula totales diferentes al exportar,BUG
+Después de actualizar la página aparece completamente vacía,BUG
+El buscador no devuelve resultados aunque existen registros,BUG
+La app móvil se cierra al abrir una notificación,BUG
+El botón para guardar permanece deshabilitado sin motivo,BUG
+La carga de documentos termina con una excepción inesperada,BUG
+Los filtros se reinician al cambiar de sección,BUG
+La fecha seleccionada cambia un día al guardar el reporte,BUG
+El sistema tarda varios minutos en mostrar el historial,BUG
+La tabla corta los nombres largos y no permite desplazarse,BUG
+Recibo un código 500 al consultar mis órdenes,BUG
+La sincronización duplica eventos en el calendario,BUG
+La página de perfil no actualiza la fotografía nueva,BUG
+El archivo descargado se genera con columnas desordenadas,BUG
+Sería útil poder programar el envío semanal de informes,FEATURE
+Quisiera una opción para guardar filtros favoritos,FEATURE
+Solicito integrar el calendario con Microsoft Teams,FEATURE
+Me gustaría recibir alertas configurables por correo,FEATURE
+Podrían agregar modo oscuro en la interfaz,FEATURE
+Necesitamos exportar los datos también en formato Excel,FEATURE
+Propongo permitir etiquetas personalizadas en los tickets,FEATURE
+Sería conveniente comparar dos periodos en el tablero,FEATURE
+Quiero elegir qué columnas aparecen en la lista,FEATURE
+Solicito una función para archivar conversaciones antiguas,FEATURE
+Me gustaría compartir un reporte mediante enlace temporal,FEATURE
+Agreguen plantillas reutilizables para responder solicitudes,FEATURE
+Necesitamos un indicador de progreso para cargas grandes,FEATURE
+Quisiera recibir un resumen mensual de actividad,FEATURE
+Podrían permitir comentarios internos entre agentes,FEATURE
+Solicito que la búsqueda acepte operadores avanzados,FEATURE
+Detecté intentos de acceso desde un país desconocido,SECURITY
+Alguien modificó los datos de mi perfil sin mi permiso,SECURITY
+Encontré una posible inyección SQL en el cuadro de búsqueda,SECURITY
+Un correo sospechoso solicita las claves de los usuarios,SECURITY
+Creo que se expuso un archivo con información confidencial,SECURITY
+Hay actividad extraña en una cuenta administrativa,SECURITY
+Recibimos una alerta de malware en un equipo conectado,SECURITY
+El token de API apareció publicado en un repositorio público,SECURITY
+Un usuario externo pudo ver facturas que no le corresponden,SECURITY
+Reporto un enlace que redirige a un sitio de phishing,SECURITY
+Parece que una sesión fue secuestrada desde otra ubicación,SECURITY
+La auditoría muestra cambios realizados por una identidad desconocida,SECURITY
+Hay una vulnerabilidad XSS en el campo de nombre,SECURITY
+Compartieron capturas con números de tarjeta sin protección,SECURITY
+Un dispositivo no autorizado descargó muchos registros,SECURITY
+Necesito reportar una posible fuga de datos personales,SECURITY
