@@ -1,0 +1,201 @@
+message,category
+Olvidé mi contraseña y no puedo recuperar el acceso al portal,ACCESS
+El código de verificación nunca llega a mi correo corporativo,ACCESS
+Mi usuario fue desactivado después de varios intentos fallidos,ACCESS
+La autenticación de dos factores rechaza mi token válido,ACCESS
+Necesito desbloquear la cuenta de una nueva colaboradora,ACCESS
+El enlace para restablecer clave caduca inmediatamente,ACCESS
+No tengo permisos para abrir el panel de facturación,ACCESS
+La sesión se cierra cada vez que intento entrar al tablero,ACCESS
+El sistema indica credenciales incorrectas aunque fueron actualizadas,ACCESS
+No puedo vincular mi cuenta con el proveedor de identidad,ACCESS
+El inicio con SSO redirige a una página sin autorización,ACCESS
+Mi perfil no aparece habilitado para usar la plataforma,ACCESS
+La aplicación pide una contraseña anterior que ya no existe,ACCESS
+El administrador me creó pero no recibí invitación de acceso,ACCESS
+La cuenta queda bloqueada al confirmar el segundo factor,ACCESS
+No puedo ingresar desde la red VPN de la empresa,ACCESS
+Al adjuntar una imagen la pantalla se congela,BUG
+El formulario muestra un mensaje de error al enviar comentarios,BUG
+La gráfica de ventas calcula totales diferentes al exportar,BUG
+Después de actualizar la página aparece completamente vacía,BUG
+El buscador no devuelve resultados aunque existen registros,BUG
+La app móvil se cierra al abrir una notificación,BUG
+El botón para guardar permanece deshabilitado sin motivo,BUG
+La carga de documentos termina con una excepción inesperada,BUG
+Los filtros se reinician al cambiar de sección,BUG
+La fecha seleccionada cambia un día al guardar el reporte,BUG
+El sistema tarda varios minutos en mostrar el historial,BUG
+La tabla corta los nombres largos y no permite desplazarse,BUG
+Recibo un código 500 al consultar mis órdenes,BUG
+La sincronización duplica eventos en el calendario,BUG
+La página de perfil no actualiza la fotografía nueva,BUG
+El archivo descargado se genera con columnas desordenadas,BUG
+Sería útil poder programar el envío semanal de informes,FEATURE
+Quisiera una opción para guardar filtros favoritos,FEATURE
+Solicito integrar el calendario con Microsoft Teams,FEATURE
+Me gustaría recibir alertas configurables por correo,FEATURE
+Podrían agregar modo oscuro en la interfaz,FEATURE
+Necesitamos exportar los datos también en formato Excel,FEATURE
+Propongo permitir etiquetas personalizadas en los tickets,FEATURE
+Sería conveniente comparar dos periodos en el tablero,FEATURE
+Quiero elegir qué columnas aparecen en la lista,FEATURE
+Solicito una función para archivar conversaciones antiguas,FEATURE
+Me gustaría compartir un reporte mediante enlace temporal,FEATURE
+Agreguen plantillas reutilizables para responder solicitudes,FEATURE
+Necesitamos un indicador de progreso para cargas grandes,FEATURE
+Quisiera recibir un resumen mensual de actividad,FEATURE
+Podrían permitir comentarios internos entre agentes,FEATURE
+Solicito que la búsqueda acepte operadores avanzados,FEATURE
+Detecté intentos de acceso desde un país desconocido,SECURITY
+Alguien modificó los datos de mi perfil sin mi permiso,SECURITY
+Encontré una posible inyección SQL en el cuadro de búsqueda,SECURITY
+Un correo sospechoso solicita las claves de los usuarios,SECURITY
+Creo que se expuso un archivo con información confidencial,SECURITY
+Hay actividad extraña en una cuenta administrativa,SECURITY
+Recibimos una alerta de malware en un equipo conectado,SECURITY
+El token de API apareció publicado en un repositorio público,SECURITY
+Un usuario externo pudo ver facturas que no le corresponden,SECURITY
+Reporto un enlace que redirige a un sitio de phishing,SECURITY
+Parece que una sesión fue secuestrada desde otra ubicación,SECURITY
+La auditoría muestra cambios realizados por una identidad desconocida,SECURITY
+Hay una vulnerabilidad XSS en el campo de nombre,SECURITY
+Compartieron capturas con números de tarjeta sin protección,SECURITY
+Un dispositivo no autorizado descargó muchos registros,SECURITY
+Necesito reportar una posible fuga de datos personales,SECURITY
+Me cambiaron de área y ya no puedo entrar al espacio del equipo,ACCESS
+Perdí el celular donde recibía los códigos de inicio de sesión,ACCESS
+¿Me ayudan a recuperar mi usuario? Solo recuerdo el correo de alta,ACCESS
+El lector de huellas no me identifica para entrar a mi cuenta,ACCESS
+Mi invitación para unirme al proyecto expiró durante las vacaciones,ACCESS
+Me deja consultar pedidos pero mi rol debería permitir aprobarlos,ACCESS
+Restablecí la contraseña y ahora necesito volver a vincular el autenticador,ACCESS
+Al entrar con mi correo nuevo se abre un perfil vacío en lugar del mío,ACCESS
+Me pide verificar un número telefónico que ya di de baja,ACCESS
+¿Quién puede autorizar mi acceso de lectura a los expedientes?,ACCESS
+Me reincorporé hoy y mi usuario todavía figura como suspendido,ACCESS
+Cambié de equipo y no encuentro mis códigos de recuperación,ACCESS
+El portal de proveedores dice que mi certificado de acceso venció,ACCESS
+Mi correo está registrado pero no recuerdo con qué método iniciaba sesión,ACCESS
+Me dieron acceso al entorno de pruebas y necesito entrar al de capacitación,ACCESS
+Solo puedo abrir la carpeta como invitada y soy parte del equipo,ACCESS
+Introduje varias veces el PIN equivocado y se bloqueó mi usuario,ACCESS
+El acceso temporal al tablero terminó antes de mi último turno,ACCESS
+¿Pueden habilitar a la persona que me cubre para consultar el inventario?,ACCESS
+Al intentar iniciar sesión siempre me manda al correo de mi antigua empresa,ACCESS
+Mi llave física se dañó y necesito otra forma de autenticarme,ACCESS
+No puedo aceptar la invitación porque está dirigida a mi alias anterior,ACCESS
+Mi cuenta de prácticas sigue pendiente de activación,ACCESS
+La aplicación de escritorio solicita credenciales de un dominio que ya dejamos,ACCESS
+Mi contraseña venció mientras estaba fuera y el portal me impide entrar,ACCESS
+Necesito que me asignen el rol de supervisor para cerrar el mes,ACCESS
+Me deja entrar por navegador pero la app pide que registre el dispositivo,ACCESS
+El sistema de nómina no reconoce mi identificador de empleado al iniciar sesión,ACCESS
+Me aparece acceso denegado al abrir las grabaciones de mi curso,ACCESS
+Intento cambiar mi clave y me pide un correo alternativo que ya no controlo,ACCESS
+No puedo salir de la cuenta compartida para iniciar con mi propio usuario,ACCESS
+En el primer ingreso me solicita un código de respaldo que nunca configuré,ACCESS
+El botón de acceso corporativo indica que mi usuario no pertenece al grupo autorizado,ACCESS
+¿Cómo puedo recuperar la sesión si olvidé traer la llave de seguridad?,ACCESS
+Al imprimir una factura de dos páginas se repite la primera,BUG
+El carrito cobra dos veces el envío cuando cambio de dirección,BUG
+La pantalla de inventario muestra existencias negativas después de anular una salida,BUG
+Pulso cancelar y de todos modos se guarda el borrador,BUG
+Al girar el teléfono desaparece el texto que estaba escribiendo,BUG
+La búsqueda por apellido omite todos los resultados con acento,BUG
+Las notificaciones llegan con una hora de retraso desde el cambio de horario,BUG
+Cuando hay más de diez productos el subtotal deja fuera el último,BUG
+El PDF sale en blanco aunque la vista previa sí tiene contenido,BUG
+La barra de carga llega al cien por ciento y el proceso nunca termina,BUG
+Selecciono pesos y el resumen sigue mostrando el símbolo del euro,BUG
+Un evento mensual aparece dos veces en febrero,BUG
+En el reporte de asistencia los viernes se muestran como sábados,BUG
+Al pegar una dirección larga la aplicación deja de responder,BUG
+Marco el ticket como resuelto y vuelve a pendiente al refrescar,BUG
+La descarga del adjunto solo trae los primeros kilobytes,BUG
+Recibo el aviso de guardado pero al volver al formulario faltan los cambios,BUG
+El teclado del teléfono tapa el último campo y es imposible desplazarse,BUG
+Las miniaturas de los productos aparecen intercambiadas,BUG
+El contador de mensajes pendientes sigue en uno después de leerlos todos,BUG
+La opción de ordenar por importe coloca 100 antes que 20,BUG
+Se pierde la selección de filas al pasar a la segunda página,BUG
+El buscador muestra una excepción cuando la consulta contiene un apóstrofo,BUG
+La gráfica semanal está vacía aunque el detalle del mismo periodo tiene ventas,BUG
+La cámara se cierra al confirmar una foto tomada desde el formulario,BUG
+La página abre normalmente hasta que selecciono el idioma inglés y se congela,BUG
+El reproductor vuelve al inicio cada vez que activo los subtítulos,BUG
+Al importar un archivo con decimales la herramienta multiplica los importes por cien,BUG
+Las respuestas se ven en el navegador pero desaparecen en la versión móvil,BUG
+El recordatorio de una reunión cancelada se sigue enviando cada día,BUG
+El panel presenta una división entre cero cuando todavía no hay ventas,BUG
+El total de horas ignora los turnos que pasan de medianoche,BUG
+En la impresión de etiquetas se corta el código de barras de la derecha,BUG
+Al elegir una sucursal en el mapa se abre la ficha de la sucursal anterior,BUG
+Nos serviría poder dictar el comentario del ticket con el micrófono,FEATURE
+¿Se podría añadir una vista de inventario por ubicación física?,FEATURE
+Pido una opción para pausar los recordatorios durante vacaciones,FEATURE
+Sería bueno definir una firma distinta para cada buzón de soporte,FEATURE
+Quiero descargar varios comprobantes juntos en un solo archivo,FEATURE
+Me ayudaría duplicar una orden anterior y editar solo las cantidades,FEATURE
+Nos falta una columna con el tiempo total que cada ticket lleva abierto,FEATURE
+¿Podemos recibir un aviso cuando queden menos de cinco unidades?,FEATURE
+Propongo mostrar una vista previa antes de publicar anuncios internos,FEATURE
+Quisiera ocultar los proyectos terminados de mi pantalla de inicio,FEATURE
+Estaría bien consultar el historial de precios directamente en la ficha del producto,FEATURE
+Necesitamos un campo para indicar el edificio de entrega,FEATURE
+Para trabajo de campo sería útil capturar órdenes sin conexión,FEATURE
+Me gustaría agrupar conversaciones por cliente en una sola vista,FEATURE
+Solicito poder reasignar varios tickets en una sola operación,FEATURE
+¿Podrían ofrecer subtítulos para los videos de capacitación?,FEATURE
+Me gustaría adjuntar notas de voz al reporte de mantenimiento,FEATURE
+Para el cierre de caja nos ayudaría una comparación con el turno anterior,FEATURE
+Quisiera elegir el tamaño de letra de los reportes impresos,FEATURE
+Propongo añadir un calendario compartido de guardias del equipo,FEATURE
+Nos interesa configurar una segunda aprobación para compras grandes,FEATURE
+¿Hay planes para permitir que cada área diseñe su propio formulario?,FEATURE
+Necesito una opción para programar la publicación de avisos,FEATURE
+Quisiera marcar una conversación para darle seguimiento la próxima semana,FEATURE
+Podrían incorporar un historial que muestre quién aprobó cada etapa,FEATURE
+Pido un resumen de incidencias por sucursal en la pantalla principal,FEATURE
+Sería útil añadir la opción de escanear el código de un activo,FEATURE
+Me gustaría elegir desde el tablero si veo minutos u horas,FEATURE
+Solicitamos una vista de solo lectura para presentar resultados en una pantalla,FEATURE
+Quiero recibir los comprobantes en inglés además de español,FEATURE
+Un botón para copiar el número de pedido nos ahorraría tiempo en mostrador,FEATURE
+¿Pueden incorporar respuestas con casillas de selección en las encuestas?,FEATURE
+Propongo agregar una lista de materiales a las órdenes de servicio,FEATURE
+Nos ayudaría tener un aviso de vencimiento para los contratos de clientes,FEATURE
+Recibí una solicitud de aprobación de inicio de sesión mientras estaba durmiendo,SECURITY
+Mi historial registra una descarga de clientes que yo no realicé,SECURITY
+Un enlace del boletín permite leer documentos internos sin iniciar sesión,SECURITY
+Me llamaron haciéndose pasar por soporte para pedirme el código de verificación,SECURITY
+Un proveedor reportó que puede ver los pedidos de otra empresa,SECURITY
+Aparecieron reglas de reenvío en mi buzón que nunca configuré,SECURITY
+La aplicación compartió mi domicilio con un usuario desconocido,SECURITY
+Encontramos datos personales visibles en una página pública de pruebas,SECURITY
+El portal envió una alerta por varios intentos de adivinar contraseñas,SECURITY
+Veo una sesión abierta desde una computadora que no reconozco,SECURITY
+Nos enviaron un archivo que el antivirus identificó como malicioso,SECURITY
+La cuenta de un excolaborador sigue descargando expedientes confidenciales,SECURITY
+Recibí una factura de un dominio que suplanta al de nuestro proveedor,SECURITY
+Un mensaje enviado desde mi cuenta pide transferencias que yo no autoricé,SECURITY
+Hay una clave privada visible en el historial público del proyecto,SECURITY
+El reporte descargable de un cliente incluye los teléfonos de otros clientes,SECURITY
+Apareció un administrador nuevo sin que nadie del equipo lo autorizara,SECURITY
+Una persona ajena al proyecto publicó capturas de nuestro tablero privado,SECURITY
+La herramienta de seguridad marcó una extracción masiva de documentos,SECURITY
+Se están enviando invitaciones fraudulentas con el nombre de la empresa,SECURITY
+Recibí un aviso de cambio de correo y yo no solicité ningún cambio,SECURITY
+Mi navegador alerta de una copia fraudulenta de nuestro portal de acceso,SECURITY
+El registro indica que se desactivaron las alertas de auditoría sin autorización,SECURITY
+Un empleado recibió un correo que le exige compartir su contraseña para conservar la cuenta,SECURITY
+Los archivos de una estación muestran una nota de rescate y dejaron de abrir,SECURITY
+Un invitado externo encontró datos de nómina en una carpeta compartida,SECURITY
+Mi perfil tiene un método de recuperación que añadió alguien más,SECURITY
+Descubrimos un respaldo interno expuesto mediante una dirección pública,SECURITY
+Hay compras hechas con mi cuenta durante un periodo en que estaba desconectado,SECURITY
+La cuenta de mensajería de la empresa está difundiendo enlaces sospechosos,SECURITY
+Aparece una aplicación desconocida con permiso de lectura sobre mi correo,SECURITY
+Un archivo adjunto que envié en privado quedó accesible para cualquier visitante,SECURITY
+Recibo avisos de transferencias desde mi usuario sin haberlas solicitado,SECURITY
+Detectamos que alguien modificó la cuenta bancaria de un proveedor sin autorización,SECURITY

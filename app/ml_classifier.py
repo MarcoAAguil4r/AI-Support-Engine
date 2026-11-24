@@ -4,7 +4,7 @@ from math import ceil
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import classification_report
+from sklearn.metrics import classification_report, confusion_matrix
 from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline
 
@@ -18,6 +18,8 @@ VALID_CATEGORIES = {category.value for category in Category}
 class TrainingResult:
     model: Pipeline
     report: str
+    matrix_labels: tuple[str, ...]
+    confusion_matrix: list[list[int]]
 
 
 def load_tickets(csv_path: str) -> pd.DataFrame:
@@ -103,10 +105,21 @@ def train_and_evaluate(
     )
     model.fit(x_train, y_train)
     predictions = model.predict(x_test)
+    matrix_labels = tuple(str(label) for label in model.classes_)
     report = classification_report(
         y_test,
         predictions,
-        labels=sorted(VALID_CATEGORIES),
+        labels=matrix_labels,
         zero_division=0,
     )
-    return TrainingResult(model=model, report=report)
+    matrix = confusion_matrix(
+        y_test,
+        predictions,
+        labels=matrix_labels,
+    ).tolist()
+    return TrainingResult(
+        model=model,
+        report=report,
+        matrix_labels=matrix_labels,
+        confusion_matrix=matrix,
+    )

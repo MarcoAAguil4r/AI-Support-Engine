@@ -3,6 +3,7 @@ import pytest
 
 from app.ml_classifier import load_tickets, train_and_evaluate
 from app.schemas import Category
+from scripts.train_ml import main as train_ml_main
 
 
 @pytest.fixture
@@ -57,6 +58,48 @@ def test_training_produces_report_and_predicts_known_categories(
     assert prediction[0] in {category.value for category in Category}
     assert "precision" in result.report
     assert "accuracy" in result.report
+    assert set(result.matrix_labels) == {category.value for category in Category}
+    assert len(result.confusion_matrix) == len(Category)
+    assert all(len(row) == len(Category) for row in result.confusion_matrix)
+    assert sum(sum(row) for row in result.confusion_matrix) == 4
+    confidence = result.model.predict_proba(
+        ["Encontré datos de otros clientes"]
+    ).max()
+    assert 0 <= confidence <= 1
+
+
+def test_training_command_prints_matrix_prediction_and_confidence(
+    tickets: pd.DataFrame,
+    tmp_path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    path = tmp_path / "tickets.csv"
+    tickets.to_csv(path, index=False)
+    monkeypatch.setattr(
+        "sys.argv",
+        [
+            "train_ml",
+            "--data",
+            str(path),
+            "--predict",
+            "Encontré datos de otros clientes",
+        ],
+    )
+
+    train_ml_main()
+
+    output = capsys.readouterr().out
+    assert "Reporte de clasificación:" in output
+    assert "Matriz de confusión:" in output
+    assert "Orden de categorías de la matriz:" in output
+    assert "Categoría:" in output
+    score = next(
+        line.split(":", maxsplit=1)[1].strip()
+        for line in output.splitlines()
+        if line.startswith("Score aproximado:")
+    )
+    assert 0 <= float(score) <= 1
 
 
 def test_load_tickets_selects_required_columns(tmp_path) -> None:
