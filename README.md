@@ -76,7 +76,7 @@ Para entrenar el clasificador TF-IDF y evaluar un CSV etiquetado con las
 columnas `message` y `category`:
 
 ```powershell
-python scripts/train_ml.py --data tickets.csv --predict "Encontré datos de otros clientes"
+python -m scripts.train_ml --data tickets.csv --predict "Encontré datos de otros clientes"
 ```
 
 El comando imprime el reporte de clasificación, la matriz de confusión (filas
